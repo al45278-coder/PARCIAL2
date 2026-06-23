@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Recibo Telefónico</title>
+
+    <style>
+        body{
+            background-color: lightgreen;
+            font-family: "Times New Roman", serif;
+        }
+
+        h1{
+            text-align: center;
+            font-size: 32px;
+        }
+
+        .contenedor{
+            width: 92%;
+            margin: auto;
+            border: 3px double black;
+            padding: 3px;
+        }
+
+        .fila{
+            border-bottom: 1px solid white;
+            padding: 8px 0;
+        }
+
+        .fila:last-child{
+            border-bottom: none;
+        }
+
+        label{
+            font-size: 16px;
+        }
+
+        input[type="number"]{
+            width: 45px;
+        }
+
+        select{
+            width: 125px;
+        }
+
+        button{
+            margin-top: 5px;
+            padding: 3px 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>RECIBO TELEFONICO</h1>
+
+    <div class="contenedor">
+
+        <form>
+
+            <div class="fila">
+                <label>
+                    Minutos de llamadas a celular: (1.00 c/u)
+                    <input type="number">
+                </label>
+            </div>
+
+            <div class="fila">
+                <b>Tipo de plan</b><br>
+
+                <label>
+                    <input type="radio" name="plan">
+                    Solo telefono (200.00)
+                </label><br>
+
+                <label>
+                    <input type="radio" name="plan">
+                    Telefono + Internet (450.00)
+                </label><br>
+
+                <label>
+                    <input type="radio" name="plan">
+                    Telefono + Internet + TV (850.00)
+                </label>
+            </div>
+
+            <div class="fila">
+                <b>Otros Servicios</b><br>
+
+                <label>
+                    <input type="checkbox">
+                    Antivirus (30.00)
+                </label><br>
+
+                <label>
+                    <input type="checkbox">
+                    Servicios de nube (50.00)
+                </label><br>
+
+                <label>
+                    <input type="checkbox">
+                    Servicios web (40.00)
+                </label>
+            </div>
+
+            <div class="fila">
+                <b>Paquetes</b><br>
+
+                <select>
+                    <option>Residencial +0%</option>
+                    <option>PYMES +10%</option>
+                    <option>Empresarial +20%</option>
+                </select>
+            </div>
+
+            <div class="fila">
+                <button type="button">Calcular Recibo</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
