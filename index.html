@@ -35,19 +35,37 @@
             font-size: 16px;
         }
 
-        input[type="number"]{
-            width: 45px;
+        input[type="text"]{
+            width: 60px;
         }
 
         select{
-            width: 125px;
+            width: 140px;
         }
 
         button{
             margin-top: 5px;
             padding: 3px 8px;
+            cursor: pointer;
         }
     </style>
+
+    <script>
+        function gracias(){
+            alert("GRACIAS POR TU PAGO");
+        }
+
+        function soloNumeros(event){
+            let codigo = event.which || event.keyCode;
+
+            if(codigo >= 48 && codigo <= 57){
+                return true;
+            }
+
+            return false;
+        }
+    </script>
+
 </head>
 
 <body>
@@ -61,7 +79,7 @@
             <div class="fila">
                 <label>
                     Minutos de llamadas a celular: (1.00 c/u)
-                    <input type="number">
+                    <input type="text" onkeypress="return soloNumeros(event)">
                 </label>
             </div>
 
@@ -70,17 +88,17 @@
 
                 <label>
                     <input type="radio" name="plan">
-                    Solo telefono (200.00)
+                    Solo teléfono (200.00)
                 </label><br>
 
                 <label>
                     <input type="radio" name="plan">
-                    Telefono + Internet (450.00)
+                    Teléfono + Internet (450.00)
                 </label><br>
 
                 <label>
                     <input type="radio" name="plan">
-                    Telefono + Internet + TV (850.00)
+                    Teléfono + Internet + TV (850.00)
                 </label>
             </div>
 
@@ -114,7 +132,9 @@
             </div>
 
             <div class="fila">
-                <button type="button">Calcular Recibo</button>
+                <button type="button" onclick="gracias()">
+                    Calcular Recibo
+                </button>
             </div>
 
         </form>
