@@ -51,9 +51,6 @@
     </style>
 
     <script>
-        function gracias(){
-            alert("GRACIAS POR TU PAGO");
-        }
 
         function soloNumeros(event){
             let codigo = event.which || event.keyCode;
@@ -64,6 +61,50 @@
 
             return false;
         }
+
+        function calcularRecibo(){
+
+            let minutos = Number(document.getElementById("minutos").value);
+
+            let plan = Number(document.querySelector('input[name="plan"]:checked').value);
+
+            let servicios = 0;
+
+            if(document.getElementById("antivirus").checked){
+                servicios += 30;
+            }
+
+            if(document.getElementById("nube").checked){
+                servicios += 50;
+            }
+
+            if(document.getElementById("web").checked){
+                servicios += 40;
+            }
+
+            let porcentaje = Number(document.getElementById("paquete").value);
+
+            let costoMinutos = minutos * 1;
+
+            let subtotal = costoMinutos + plan + servicios;
+
+            let aumento = subtotal * porcentaje;
+
+            let total = subtotal + aumento;
+
+            alert(
+                "******** RECIBO TELEFÓNICO ********\n\n"+
+                "Costo por minutos: $" + costoMinutos.toFixed(2) + "\n"+
+                "Costo del plan: $" + plan.toFixed(2) + "\n"+
+                "Servicios adicionales: $" + servicios.toFixed(2) + "\n"+
+                "Subtotal: $" + subtotal.toFixed(2) + "\n"+
+                "Aumento por paquete: $" + aumento.toFixed(2) + "\n"+
+                "---------------------------------\n"+
+                "TOTAL A PAGAR: $" + total.toFixed(2)
+            );
+
+        }
+
     </script>
 
 </head>
@@ -79,66 +120,73 @@
             <div class="fila">
                 <label>
                     Minutos de llamadas a celular: (1.00 c/u)
-                    <input type="text" onkeypress="return soloNumeros(event)">
+                    <input type="text" id="minutos" onkeypress="return soloNumeros(event)">
                 </label>
             </div>
 
             <div class="fila">
-                <b>Tipo de plan</b><br>
+
+                <b>Tipo de plan</b><br><br>
 
                 <label>
-                    <input type="radio" name="plan">
-                    Solo teléfono (200.00)
+                    <input type="radio" name="plan" value="200">
+                    Solo teléfono ($200.00)
                 </label><br>
 
                 <label>
-                    <input type="radio" name="plan">
-                    Teléfono + Internet (450.00)
+                    <input type="radio" name="plan" value="450">
+                    Teléfono + Internet ($450.00)
                 </label><br>
 
                 <label>
-                    <input type="radio" name="plan">
-                    Teléfono + Internet + TV (850.00)
+                    <input type="radio" name="plan" value="850">
+                    Teléfono + Internet + TV ($850.00)
                 </label>
+
             </div>
 
             <div class="fila">
-                <b>Otros Servicios</b><br>
+
+                <b>Otros Servicios</b><br><br>
 
                 <label>
-                    <input type="checkbox">
-                    Antivirus (30.00)
+                    <input type="checkbox" id="antivirus">
+                    Antivirus ($30.00)
                 </label><br>
 
                 <label>
-                    <input type="checkbox">
-                    Servicios de nube (50.00)
+                    <input type="checkbox" id="nube">
+                    Servicios de nube ($50.00)
                 </label><br>
 
                 <label>
-                    <input type="checkbox">
-                    Servicios web (40.00)
+                    <input type="checkbox" id="web">
+                    Servicios web ($40.00)
                 </label>
+
             </div>
 
             <div class="fila">
-                <b>Paquetes</b><br>
 
-                <select>
-                    <option>Residencial +0%</option>
-                    <option>PYMES +10%</option>
-                    <option>Empresarial +20%</option>
+                <b>Paquetes</b><br><br>
+
+                <select id="paquete">
+                    <option value="0">Residencial +0%</option>
+                    <option value="0.10">PYMES +10%</option>
+                    <option value="0.20">Empresarial +20%</option>
                 </select>
+
             </div>
 
             <div class="fila">
-                <button type="button" onclick="gracias()">
+
+                <button type="button" onclick="calcularRecibo()">
                     Calcular Recibo
                 </button>
+
             </div>
 
         </form>
-
     </div>
 
 </body>
